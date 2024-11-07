@@ -13,7 +13,7 @@ while (chute != numeroSecreto) {
   chute = prompt('Escolha um numero de 1 a 10')
 
   if (numeroSecreto == chute) {
-    alert(`Isso ai, você acertou o número secreto! ${numeroSecreto} em tum total de ${tentativas} tentativas`);
+    break;
   } else {
     if (chute > numeroSecreto) {
       alert (`O numero secreto é menor que ${chute}`)
@@ -25,4 +25,11 @@ while (chute != numeroSecreto) {
   tentativas++
 
 }
+
+if (tentativas > 1) {
+  alert(`Isso ai, você acertou o número secreto! ${numeroSecreto} em tum total de ${tentativas} tentativas`);
+} else {
+  alert(`Isso ai, você acertou o número secreto! ${numeroSecreto} em tum total de ${tentativas} tentativa`);
+}
+
 
