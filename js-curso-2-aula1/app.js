@@ -5,9 +5,10 @@ titulo.innerHTML = 'Jogo do número secreto'
 let paragrafo = document.querySelector('p');
 paragrafo.innerHTML = 'Escolha um número de 1 a 10';*/
 let numeroSecreto = gerarNumeroAleatorio();
+let tentativas = 1;
 
 //Agora vou criar o mesmo que esta acima porém com funçòes já que o codigo se repete.
-function exibirTextoNaTela(tag, texto){
+function exibirTextoNaTela(tag, texto) {
   let textoNaTela = document.querySelector(tag);
   textoNaTela.innerHTML = texto;
 }
@@ -15,21 +16,24 @@ function exibirTextoNaTela(tag, texto){
 exibirTextoNaTela('h1', 'Jogo do número secreto');
 exibirTextoNaTela('p', 'Escolha um número de 1 a 10');
 
-function verificarChute () {
-  let chute = document.querySelector('input').value
-  
+function verificarChute() {
+  let chute = document.querySelector('input').value;
+
   if (chute == numeroSecreto) {
     exibirTextoNaTela('h1', 'Acertou!');
-    exibirTextoNaTela('p', 'Parabéns, você acertou!');
+    let palavraTentativa = tentativas > 1 ? 'tentativas' : 'tentativa';
+    let mensagemTentativas = `Parabéns, você acertou! com ${tentativas} ${palavraTentativa}!`;
+    exibirTextoNaTela('p', mensagemTentativas);
   } else {
     if (chute > numeroSecreto) {
-      exibirTextoNaTela('p', 'O Numero secreto é menor!')
+      exibirTextoNaTela('p', 'O Numero secreto é menor!');
     } else {
-      exibirTextoNaTela('p', 'O numero secreto é maior!')
+      exibirTextoNaTela('p', 'O numero secreto é maior!');
     }
+    tentativas++
   }
 }
 
-function gerarNumeroAleatorio () {
+function gerarNumeroAleatorio() {
   return parseInt(Math.random() * 10 + 1);
 }
