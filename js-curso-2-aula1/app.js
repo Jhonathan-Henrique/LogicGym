@@ -4,6 +4,8 @@ titulo.innerHTML = 'Jogo do número secreto'
 
 let paragrafo = document.querySelector('p');
 paragrafo.innerHTML = 'Escolha um número de 1 a 10';*/
+let listaNumeroSorteado = [];
+let numeroLimite = 10;
 let numeroSecreto = gerarNumeroAleatorio();
 let tentativas = 1;
 mensagemTelaInicial();
@@ -41,7 +43,22 @@ function verificarChute() {
 }
 
 function gerarNumeroAleatorio() {
-  return parseInt(Math.random() * 10 + 1);
+  let numeroEscolhido = parseInt(Math.random() * numeroLimite + 1);
+  let qtdElementosNaLista = listaNumeroSorteado.length;
+
+  if (qtdElementosNaLista == numeroLimite) {
+    listaNumeroSorteado = [];
+  }
+
+  if (listaNumeroSorteado.includes(numeroEscolhido)){
+    return gerarNumeroAleatorio() // recursão a função que por algum motivo chama ela mesma.
+  } else {
+    listaNumeroSorteado.push(numeroEscolhido);
+    console.log(listaNumeroSorteado);
+    return numeroEscolhido;
+
+  }
+
 }
 
 function limpaCampo(){
