@@ -1,0 +1,1 @@
+let linguagensDeProgramacao = ['JavaScript', 'c', 'c++', 'Kotlin', 'Python']
